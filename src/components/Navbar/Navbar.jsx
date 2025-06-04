@@ -5,7 +5,7 @@ import ThemeChanger from './ThemeChanger';
 const Navbar = () => {
 
     const links = <>
-        <NavLink to={'/'}><li><a>Home</a></li></NavLink>
+        <li><NavLink to={'/'}>Home</NavLink></li>
     </>
     return (
         <nav className='w-full bg-base-100 shadow-sm'>
@@ -34,7 +34,8 @@ const Navbar = () => {
                 </div>
                 <div className="navbar-end">
                     <ThemeChanger></ThemeChanger>
-                    <Link className="btn">Button</Link>
+                    <Link to='/register' className="btn">Register</Link>
+                    <Link to='/login' className="btn">Login</Link>
                 </div>
             </div>
         </nav>
