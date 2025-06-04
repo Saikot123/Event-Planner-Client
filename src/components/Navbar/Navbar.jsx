@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { use } from 'react';
 import { Link, NavLink } from 'react-router';
 import ThemeChanger from './ThemeChanger';
+import { AuthContext } from '../../context/AuthContext';
+import Avatar from './Avatar';
 
 const Navbar = () => {
+    const { user } = use(AuthContext);
 
     const links = <>
         <li><NavLink to={'/'}>Home</NavLink></li>
@@ -32,10 +35,17 @@ const Navbar = () => {
                         }
                     </ul>
                 </div>
-                <div className="navbar-end">
+                <div className="navbar-end gap-5">
                     <ThemeChanger></ThemeChanger>
-                    <Link to='/register' className="btn">Register</Link>
-                    <Link to='/login' className="btn">Login</Link>
+                    {
+                        user ?
+                            <Avatar></Avatar>
+                            :
+                            <div>
+                                <Link to='/register' className="btn mr-1">Register</Link>
+                                <Link to='/login' className="btn">Login</Link>
+                            </div>
+                    }
                 </div>
             </div>
         </nav>

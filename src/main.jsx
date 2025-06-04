@@ -6,11 +6,25 @@ import {
 } from "react-router";
 import { router } from './router/router.jsx';
 import AuthProvider from './context/AuthProvider.jsx';
+import { Bounce, ToastContainer } from 'react-toastify';
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <AuthProvider>
       <RouterProvider router={router} />
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick={false}
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+        transition={Bounce}
+      />
     </AuthProvider>
   </StrictMode>,
 )

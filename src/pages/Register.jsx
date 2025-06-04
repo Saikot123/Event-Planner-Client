@@ -1,15 +1,41 @@
-import React from 'react';
+import React, { use } from 'react';
 import Register_lottie from '../assets/Lotties/Register_lottie.json'
 import Lottie from 'lottie-react';
+import { AuthContext } from '../context/AuthContext';
+import { toast } from 'react-toastify';
+import { useNavigate } from 'react-router';
 
 const Register = () => {
+    const { createUser, updateUser } = use(AuthContext);
+    const navigate = useNavigate();
+
     const handleRegister = (e) => {
         e.preventDefault();
         const name = e.target.name.value;
         const email = e.target.email.value;
         const photo = e.target.photo.value;
         const password = e.target.password.value;
-        console.log(name, email, photo, password);
+
+        // Create User
+        createUser(email, password)
+            .then(result => {
+                const newUser = result.user;
+
+                // Update User
+                updateUser(name, photo)
+                    .then(() => {
+                        toast.success('Successful Registation');
+                        navigate('/');
+                    })
+                    .catch(error => {
+                        toast.error('Update User Failed!!');
+                    })
+                    console.log(result.user);
+            })
+            .catch(error => {
+                console.log(error);
+                toast.error('Registation Failed')
+            })
     }
     return (
         <div className="hero bg-base-200 min-h-screen">
