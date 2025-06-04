@@ -3,11 +3,12 @@ import Login_Lottie from '../assets/Lotties/Login_lottie.json'
 import { use } from 'react';
 import { AuthContext } from '../context/AuthContext';
 import { toast } from 'react-toastify';
-import { useNavigate } from 'react-router';
+import { useLocation, useNavigate } from 'react-router';
 
 const Login = () => {
     const {googleSignIn,login} = use(AuthContext);
     const navigate = useNavigate();
+    const location = useLocation();
 
     const handleLogin = e => {
         e.preventDefault();
@@ -19,7 +20,7 @@ const Login = () => {
         .then(result=>{
             console.log(result.user);
             toast.success('Successful Login');
-            navigate('/');
+            navigate('/' || location.state);
         })
         .catch(error=>console.log(error));
     }

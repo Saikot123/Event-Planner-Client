@@ -9,6 +9,7 @@ const Navbar = () => {
 
     const links = <>
         <li><NavLink to={'/'}>Home</NavLink></li>
+        
     </>
     return (
         <nav className='w-full bg-base-100 shadow-sm'>

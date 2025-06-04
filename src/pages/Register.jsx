@@ -3,11 +3,12 @@ import Register_lottie from '../assets/Lotties/Register_lottie.json'
 import Lottie from 'lottie-react';
 import { AuthContext } from '../context/AuthContext';
 import { toast } from 'react-toastify';
-import { useNavigate } from 'react-router';
+import { useLocation, useNavigate } from 'react-router';
 
 const Register = () => {
     const { createUser, updateUser } = use(AuthContext);
     const navigate = useNavigate();
+    const location = useLocation();
 
     const handleRegister = (e) => {
         e.preventDefault();
@@ -25,7 +26,7 @@ const Register = () => {
                 updateUser(name, photo)
                     .then(() => {
                         toast.success('Successful Registation');
-                        navigate('/');
+                        navigate('/' || location.state);
                     })
                     .catch(error => {
                         toast.error('Update User Failed!!');
