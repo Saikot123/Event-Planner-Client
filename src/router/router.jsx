@@ -8,6 +8,7 @@ import CreateEvent from "../pages/CreateEvent";
 import JoinEvent from "../pages/JoinEvent";
 import ManageEvent from "../pages/ManageEvent";
 import UpcomingEvents from "../pages/UpcomingEvents";
+import NotFound from "../pages/NotFound";
 
 export const router = createBrowserRouter([
   {
@@ -41,6 +42,10 @@ export const router = createBrowserRouter([
         {
           path:'/login',
           Component:Login
+        },
+        {
+          path:'*',
+          Component:NotFound
         }
     ]
   },
