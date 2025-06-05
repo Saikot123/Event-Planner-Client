@@ -16,7 +16,7 @@ const Navbar = () => {
                 <>
                     <li><NavLink to={'/createEvent'} className='bg-secondary text-white mr-1'>Create Events</NavLink></li>
                     <li><NavLink to={'/manageEvent'} className='bg-secondary text-white mr-1'>Manage Events</NavLink></li>
-                    <li><NavLink to={'/joinEvent'} className='bg-secondary text-white mr-1'>Join Events</NavLink></li>
+                    <li><NavLink to={'/joinEvent'} className='bg-secondary text-white mr-1'>Joined Events</NavLink></li>
                 </>
                 :
                 <></>
