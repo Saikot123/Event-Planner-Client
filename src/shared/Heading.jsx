@@ -3,7 +3,7 @@ import { Link } from 'react-router';
 
 const Heading = ({ message }) => {
     return (
-        <h2 className='font-bold text-3xl text-secondary'>{message}</h2>
+        <h2 className='font-bold text-5xl text-secondary text-center pb-10'>{message}</h2>
     );
 };
 
