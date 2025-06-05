@@ -37,7 +37,7 @@ const Avatar = () => {
                 </div>
             </div>
 
-            <button className='btn' onClick={handleLogout}>
+            <button className='btn bg-secondary text-white' onClick={handleLogout}>
                 Logout
             </button>
             <Tooltip id="my-tooltip" />

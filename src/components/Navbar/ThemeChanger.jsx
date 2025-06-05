@@ -10,7 +10,7 @@ const ThemeChanger = () => {
     }
     return (
         <div>
-            <button onClick={handleThemeChange} className='hover:cursor-pointer'>
+            <button onClick={handleThemeChange} className='text-secondary hover:cursor-pointer'>
                 {
                     dark ? <FaSun size={32} /> : <FaMoon size={32} />
                 }

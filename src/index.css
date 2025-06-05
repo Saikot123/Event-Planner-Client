@@ -4,9 +4,13 @@
 @plugin "daisyui/theme" {
   name: "light";
   default: true; 
+  --color-primary:'#FFFFFF';
+  --color-secondary:'#d98200';
 }
 
 @plugin "daisyui/theme" {
   name: "dark";
   default: true; 
+  --color-primary:'#1e1e1e';
+  --color-secondary:'#ffb347';
 }

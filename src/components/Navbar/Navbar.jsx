@@ -3,16 +3,29 @@ import { Link, NavLink } from 'react-router';
 import ThemeChanger from './ThemeChanger';
 import { AuthContext } from '../../context/AuthContext';
 import Avatar from './Avatar';
+import logo from '../../assets/logo/logo.png'
 
 const Navbar = () => {
     const { user } = use(AuthContext);
 
     const links = <>
-        <li><NavLink to={'/'}>Home</NavLink></li>
-        
+        <li><NavLink to={'/'} className='bg-secondary text-white mr-1'>Home</NavLink></li>
+        <li><NavLink to={'/upcomingEvents'} className='bg-secondary text-white mr-1'>Upcoming Events</NavLink></li>
+        {
+            user ?
+                <>
+                    <li><NavLink to={'/createEvent'} className='bg-secondary text-white mr-1'>Create Events</NavLink></li>
+                    <li><NavLink to={'/manageEvent'} className='bg-secondary text-white mr-1'>Manage Events</NavLink></li>
+                    <li><NavLink to={'/joinEvent'} className='bg-secondary text-white mr-1'>Join Events</NavLink></li>
+                </>
+                :
+                <></>
+        }
+
+
     </>
     return (
-        <nav className='w-full bg-base-100 shadow-sm'>
+        <nav className='w-full bg-primary shadow-sm'>
             <div className="navbar w-4/5 mx-auto">
                 <div className="navbar-start">
                     <div className="dropdown">
@@ -27,7 +40,7 @@ const Navbar = () => {
                             }
                         </ul>
                     </div>
-                    <a className="btn btn-ghost text-xl">daisyUI</a>
+                    <img src={logo} className='w-20 h-20' alt="" />
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1">
@@ -43,8 +56,8 @@ const Navbar = () => {
                             <Avatar></Avatar>
                             :
                             <div>
-                                <Link to='/register' className="btn mr-1">Register</Link>
-                                <Link to='/login' className="btn">Login</Link>
+                                <Link to='/register' className="btn mr-1 bg-secondary text-white">Register</Link>
+                                <Link to='/login' className="btn bg-secondary text-white">Login</Link>
                             </div>
                     }
                 </div>
