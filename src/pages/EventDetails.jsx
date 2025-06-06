@@ -3,12 +3,35 @@ import { MdGroups } from "react-icons/md";
 import { useLoaderData } from 'react-router';
 import Button from '../shared/Button';
 import Heading from '../shared/Heading';
+import axios from 'axios';
+import { use } from 'react';
+import { AuthContext } from '../context/AuthContext';
+import { toast } from 'react-toastify';
 
 const EventDetails = () => {
     const event = useLoaderData();
+    const { user } = use(AuthContext);
 
     const handleJoinEvent = () => {
+        // user is already joined or not
+        const participants = event.participants;
 
+        if(participants.includes(user.email)){
+            toast.error('Already Joined!');
+            return;
+        }
+
+        // Update The database
+        axios.patch(`http://localhost:3000/events/${event._id}`, { participant: user.email })
+            .then(res => {
+                console.log(res.data);
+                if(res.data.modifiedCount){
+                    toast.success('Joined Successfully');
+                }
+            })
+            .catch(error => {
+                console.log(error);
+            })
     }
 
     return (
