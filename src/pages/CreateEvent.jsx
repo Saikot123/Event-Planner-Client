@@ -1,11 +1,35 @@
+import axios from 'axios';
 import Heading from '../shared/Heading'
-import React, { useState } from "react";
+import React, { use, useState } from "react";
 import DatePicker from "react-datepicker";
 
 import "react-datepicker/dist/react-datepicker.css";
+import { toast } from 'react-toastify';
+import { AuthContext } from '../context/AuthContext';
+
+// m/d/y
 
 const CreateEvent = () => {
     const [startDate, setStartDate] = useState(new Date());
+    const { user } = use(AuthContext);
+
+    const previousDate = (date) => {
+        const today = new Date();
+        const dateArray = date.split('/');
+
+        const month = parseInt(dateArray[0]) - 1; //Convert to 0 based
+        const day = parseInt(dateArray[1]);
+        const year = parseInt(dateArray[2]);
+
+        const inputDate = new Date(year, month, day);
+
+        if (inputDate <= today) {
+            toast.error('Please choose a future date!');
+            return false;
+        }
+
+        return true;
+    }
 
     const handleCreateEvent = e => {
         e.preventDefault();
@@ -17,13 +41,29 @@ const CreateEvent = () => {
         const description = e.target.description.value;
         const data = {
             title,
+            creator_email:user.email,
             location,
             type,
             image,
             date,
             description
         }
-        
+        // Check Date
+        if (!previousDate(date)) {
+            return;
+        }
+
+        // Update Database
+        axios.post('http://localhost:3000/events', data)
+            .then(res => {
+                console.log(res.data);
+                if(res.data.insertedId){
+                    toast.success('Event Created');
+                }
+            })
+            .catch(error => {
+                toast.error('Create Event Failed!');
+            })
     }
     return (
         <div className='bg-base-300'>
