@@ -1,7 +1,10 @@
 import { FaLocationDot } from "react-icons/fa6";
 import Button from "../../shared/Button";
+import { useState } from "react";
 
-const EventCard = ({ event }) => {
+const JoinedEvent = ({ joinedEvent }) => {
+    const [event,setEvent] = useState(joinedEvent);
+    console.log(event);
     return (
         <div className="card bg-base-100 w-[350px] shadow-sm">
             <div className="relative">
@@ -27,8 +30,8 @@ const EventCard = ({ event }) => {
                 <p>{event?.description}</p>
                 <div className="card-actions justify-center">
                     <Button
-                        text={'Show More'}
-                        to={`/eventDetails/${event?._id}`}
+                        text={'Show Details'}
+                        to={`/eventDetails/${event?.event_id}`}
                     ></Button>
                 </div>
             </div>
@@ -36,4 +39,4 @@ const EventCard = ({ event }) => {
     );
 };
 
-export default EventCard;
+export default JoinedEvent;

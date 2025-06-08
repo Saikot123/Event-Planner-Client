@@ -1,5 +1,5 @@
 import React, { use } from 'react';
-import { Link, NavLink } from 'react-router';
+import { Link, NavLink, useNavigate } from 'react-router';
 import ThemeChanger from './ThemeChanger';
 import { AuthContext } from '../../context/AuthContext';
 import Avatar from './Avatar';
@@ -7,6 +7,7 @@ import logo from '../../assets/logo/logo.png'
 
 const Navbar = () => {
     const { user } = use(AuthContext);
+    const navigate = useNavigate();
 
     const links = <>
         <li><NavLink to={'/'} className='bg-secondary text-white mr-1'>Home</NavLink></li>
@@ -15,8 +16,8 @@ const Navbar = () => {
             user ?
                 <>
                     <li><NavLink to={'/createEvent'} className='bg-secondary text-white mr-1'>Create Events</NavLink></li>
-                    <li><NavLink to={'/manageEvent'} className='bg-secondary text-white mr-1'>Manage Events</NavLink></li>
-                    <li><NavLink to={'/joinEvent'} className='bg-secondary text-white mr-1'>Joined Events</NavLink></li>
+                    <li><NavLink to={`manageEvent/${user.email}`} className='bg-secondary text-white mr-1'>Manage Events</NavLink></li>
+                    <li><NavLink to={`/joinEvent/${user.email}`} className='bg-secondary text-white mr-1'>Joined Events</NavLink></li>
                 </>
                 :
                 <></>
@@ -40,7 +41,7 @@ const Navbar = () => {
                             }
                         </ul>
                     </div>
-                    <img src={logo} className='w-20 h-20' alt="" />
+                    <img onClick={() => navigate('/')} src={logo} className='w-20 h-20 hover:cursor-pointer' alt="" />
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1">

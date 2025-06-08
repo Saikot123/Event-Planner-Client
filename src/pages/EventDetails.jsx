@@ -1,6 +1,6 @@
 import { FaLocationDot } from 'react-icons/fa6';
 import { MdGroups } from "react-icons/md";
-import { useLoaderData } from 'react-router';
+import { useLoaderData, useNavigate } from 'react-router';
 import Button from '../shared/Button';
 import Heading from '../shared/Heading';
 import axios from 'axios';
@@ -11,6 +11,7 @@ import { toast } from 'react-toastify';
 const EventDetails = () => {
     const event = useLoaderData();
     const { user } = use(AuthContext);
+    const  navigate = useNavigate();
 
     const handleJoinEvent = () => {
         // user is already joined or not
@@ -22,11 +23,12 @@ const EventDetails = () => {
         }
 
         // Update The database
-        axios.patch(`http://localhost:3000/events/${event._id}`, { participant: user.email })
+        axios.patch(`http://localhost:3000/join_events/${event._id}`, { participant: user.email })
             .then(res => {
-                console.log(res.data);
-                if(res.data.modifiedCount){
+                console.log(res?.data);
+                if(res?.data?.join?.matchedCount){
                     toast.success('Joined Successfully');
+                    navigate(`/joinEvent/${user.email}`)
                 }
             })
             .catch(error => {
@@ -42,7 +44,7 @@ const EventDetails = () => {
             <div className="card bg-base-300 shadow-sm max-w-96 mx-auto">
                 <div className="relative">
                     <figure>
-                        <img className='bg-cover w-full h-56 bg-center'
+                        <img className='bg-cover w-full h-56 bg-center rounded-md'
                             src={event.image} />
                     </figure>
                     <div className="bg-secondary p-2 text-white rounded-xl absolute -bottom-4 left-[35%] font-semibold">

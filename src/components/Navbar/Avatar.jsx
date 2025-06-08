@@ -22,17 +22,17 @@ const Avatar = () => {
             <div className="dropdown">
                 <ul tabIndex={0} className="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 top-16 shadow-sm">
                     <li><NavLink to='/createEvent'>Create Event</NavLink></li>
-                    <li><NavLink to='/manageEvent'>Manage Event</NavLink></li>
+                    <li><NavLink to={`/manageEvent/${user?.email}`}>Manage Event</NavLink></li>
                     <li><NavLink to='/joinEvent'>Join Event</NavLink></li>
                 </ul>
                 {/* Avatar */}
                 <div className="avatar hover:cursor-pointer" tabIndex={0} role="button" >
                     <div
                         data-tooltip-id="my-tooltip"
-                        data-tooltip-content={`${user.displayName}`}
+                        data-tooltip-content={`${user?.displayName}`}
                         className="w-16 rounded-full"
                     >
-                        <img src={user.photoURL} />
+                        <img src={user?.photoURL} />
                     </div>
                 </div>
             </div>

@@ -1,17 +1,16 @@
+import React, { use, useState } from 'react';
+import { useLoaderData, useNavigate } from 'react-router';
+import Heading from '../shared/Heading';
 import axios from 'axios';
-import Heading from '../shared/Heading'
-import React, { use, useState } from "react";
-import DatePicker from "react-datepicker";
-
-import "react-datepicker/dist/react-datepicker.css";
-import { toast } from 'react-toastify';
+import DatePicker from 'react-datepicker';
 import { AuthContext } from '../context/AuthContext';
+import { toast } from 'react-toastify';
 
-// m/d/y
-
-const CreateEvent = () => {
-    const [startDate, setStartDate] = useState(new Date());
+const UpdateEvent = () => {
+    const event = useLoaderData();
     const { user } = use(AuthContext);
+    const [startDate, setStartDate] = useState(new Date());
+    const navigate = useNavigate();
 
     const previousDate = (date) => {
         const today = new Date();
@@ -31,7 +30,7 @@ const CreateEvent = () => {
         return true;
     }
 
-    const handleCreateEvent = e => {
+    const handleUpdateEvent = e => {
         e.preventDefault();
         const title = e.target.title.value;
         const location = e.target.location.value;
@@ -41,7 +40,7 @@ const CreateEvent = () => {
         const description = e.target.description.value;
         const data = {
             title,
-            creator_email:user.email,
+            creator_email: user.email,
             location,
             type,
             image,
@@ -53,28 +52,32 @@ const CreateEvent = () => {
             return;
         }
 
-        // Create Event in Database
-        axios.post('http://localhost:3000/events', data)
+        // Update Event in Database
+        axios.patch(`http://localhost:3000/events/${event._id}`, data)
             .then(res => {
                 console.log(res.data);
-                if(res.data.insertedId){
-                    toast.success('Event Created');
+                if(res.data.modifiedCount){
+                    toast.success('Event Updated');
+                    navigate(`/manageEvent/${user.email}`);
                 }
             })
             .catch(error => {
-                toast.error('Create Event Failed!');
+                toast.error('Update Failed!');
+                console.log(error);
             })
+
     }
+
     return (
         <div className='bg-base-300'>
             <div className='w-4/5 mx-auto py-14'>
                 <Heading
-                    message={'Create Event'}
+                    message={'Update Event'}
                 ></Heading>
                 <div className="flex justify-center items-center">
                     <div className="card w-4/5 shrink-0 shadow-2xl bg-white">
                         <div className="card-body text-secondary">
-                            <form onSubmit={handleCreateEvent}>
+                            <form onSubmit={handleUpdateEvent}>
                                 <fieldset className="fieldset">
                                     {/* Title */}
                                     <label className="label text-xl font-semibold">Title</label>
@@ -119,4 +122,4 @@ const CreateEvent = () => {
     );
 };
 
-export default CreateEvent;
+export default UpdateEvent;
