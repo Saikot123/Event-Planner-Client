@@ -9,7 +9,7 @@ const AllEvents = ({ events }) => {
                 <Heading
                     message={'Upcoming Events'}
                 ></Heading>
-                <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4'>
+                <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mx-auto w-fit md:w-full gap-3'>
                     {
                         events.map(event=>
                             <EventCard key={event?._id} event={event}></EventCard>

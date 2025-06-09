@@ -1,9 +1,10 @@
 import { FaLocationDot } from "react-icons/fa6";
 import Button from "../../shared/Button";
+// w-[350px] md:w-[300px] lg:w-[350px]
 
 const EventCard = ({ event }) => {
     return (
-        <div className="card bg-base-100 w-[350px] shadow-sm">
+        <div className="card bg-base-100 w-xs shadow-sm">
             <div className="relative">
                 <figure>
                     <img className='bg-cover w-full h-56 bg-center rounded-t-md'

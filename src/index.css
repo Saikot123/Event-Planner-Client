@@ -13,4 +13,5 @@
   default: true; 
   --color-primary:'#1e1e1e';
   --color-secondary:'#ffb347';
+  --color-base-300:'#2a2a2a'
 }

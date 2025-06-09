@@ -6,7 +6,7 @@ const ManageEventCard = ({ myEvent }) => {
     const [event, setEvent] = useState(myEvent);
 
     return (
-        <div className="card bg-base-100 w-[350px] shadow-sm">
+        <div className="card bg-base-100 w-xs shadow-sm">
             <div className="relative">
                 <figure>
                     <img className='bg-cover w-full h-56 bg-center rounded-t-md'

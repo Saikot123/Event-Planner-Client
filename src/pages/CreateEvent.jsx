@@ -72,7 +72,7 @@ const CreateEvent = () => {
                     message={'Create Event'}
                 ></Heading>
                 <div className="flex justify-center items-center">
-                    <div className="card w-4/5 shrink-0 shadow-2xl bg-white">
+                    <div className="card w-4/5 shrink-0 shadow-2xl bg-white dark:bg-primary">
                         <div className="card-body text-secondary">
                             <form onSubmit={handleCreateEvent}>
                                 <fieldset className="fieldset">

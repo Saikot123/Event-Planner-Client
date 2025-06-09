@@ -8,7 +8,7 @@ const MangeEvent = ({ myEvents }) => {
             <Heading
                 message={'My Events'}
             ></Heading>
-            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4'>
+            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mx-auto w-fit md:w-full gap-3'>
                 {
                     myEvents.map(myEvent => <ManageEventCard
                         key={myEvent._id}

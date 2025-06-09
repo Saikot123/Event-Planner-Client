@@ -9,7 +9,7 @@ const AllJoinedEvents = ({ joinedEvents }) => {
             <Heading
                 message={'My Joined Events'}
             ></Heading>
-            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4'>
+            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mx-auto w-fit md:w-full gap-3'>
                 {
                     joinedEvents.map(joinedEvent =>
                         <JoinedEvent key={joinedEvent._id} joinedEvent={joinedEvent}></JoinedEvent>

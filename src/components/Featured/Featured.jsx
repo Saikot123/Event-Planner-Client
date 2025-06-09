@@ -10,7 +10,7 @@ import Feature from './Feature';
 
 const Featured = () => {
     return (
-        <div className='bg-white py-14'>
+        <div className='bg-white dark:bg-primary py-14'>
             <div className='space-y-5 w-4/5 mx-auto'>
                 <Heading message={'Our Features'}></Heading>
                 <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-4'>
