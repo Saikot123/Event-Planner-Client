@@ -53,10 +53,14 @@ const UpdateEvent = () => {
         }
 
         // Update Event in Database
-        axios.patch(`http://localhost:3000/events/${event._id}`, data)
+        axios.patch(`http://localhost:3000/events/${event?._id}`,data,{
+            headers:{
+                Authorization:`Bearer ${user?.accessToken}`
+            }
+        })
             .then(res => {
                 console.log(res.data);
-                if(res.data.modifiedCount){
+                if (res?.data?.modifiedCount) {
                     toast.success('Event Updated');
                     navigate(`/manageEvent/${user.email}`);
                 }
