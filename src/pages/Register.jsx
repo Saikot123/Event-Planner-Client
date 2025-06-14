@@ -3,7 +3,7 @@ import Register_lottie from '../assets/Lotties/Register_lottie.json'
 import Lottie from 'lottie-react';
 import { AuthContext } from '../context/AuthContext';
 import { toast } from 'react-toastify';
-import { useLocation, useNavigate } from 'react-router';
+import { Link, useLocation, useNavigate } from 'react-router';
 
 const Register = () => {
     const { createUser, updateUser, googleSignIn } = use(AuthContext);
@@ -77,7 +77,7 @@ const Register = () => {
                                 <label className="label">Password</label>
                                 <input type="password" name='password' className="input" placeholder="Password" />
 
-                                <div className='text-base mb-4'>Already have an Accont ? <a className="link link-hover font-semibold">Login</a></div>
+                                <div className='text-base mb-4'>Already have an Account ? <a className="link link-hover font-semibold"><Link to={'/login'}>Login</Link></a></div>
 
                                 {/* Google */}
                                 <button type='button' onClick={handleGoogle} className="btn bg-white dark:bg-primary text-black dark:text-white border-secondary">

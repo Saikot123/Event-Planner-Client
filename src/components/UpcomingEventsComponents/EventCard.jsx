@@ -28,7 +28,7 @@ const EventCard = ({ event }) => {
                 <p>{event?.description}</p>
                 <div className="card-actions justify-center">
                     <Button
-                        text={'Show More'}
+                        text={'View Event'}
                         to={`/eventDetails/${event?._id}`}
                     ></Button>
                 </div>

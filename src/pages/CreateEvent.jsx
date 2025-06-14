@@ -13,6 +13,20 @@ const CreateEvent = () => {
     const [startDate, setStartDate] = useState(new Date());
     const { user } = use(AuthContext);
 
+    const checkDate = (date) => {
+        let cnt = 0;
+        for (const letter of date) {
+            if (letter === '/') {
+                ++cnt;
+            } else if (letter >= '0' && letter <= '9') {
+                ;
+            } else {
+                return false;
+            }
+        }
+        return (cnt === 2);
+    }
+
     const previousDate = (date) => {
         const today = new Date();
         const dateArray = date.split('/');
@@ -41,23 +55,43 @@ const CreateEvent = () => {
         const description = e.target.description.value;
         const data = {
             title,
-            creator_email:user.email,
+            creator_email: user.email,
             location,
             type,
             image,
             date,
             description
         }
+
         // Check Date
+        if (!checkDate(date)) {
+            toast.error('Invalid Date!');
+            return;
+        }
+
+        // Check Previous Date
         if (!previousDate(date)) {
             return;
         }
 
+        if (title === '' || location === '' || type === '' || image === '' || description === '') {
+            toast.error('Invalid Input');
+            return;
+        }
+
         // Create Event in Database
-        axios.post('http://localhost:3000/events', data)
+        axios.post(
+            'http://localhost:3000/events',
+            data,
+            {
+                headers: {
+                    authorization: `Bearer ${user?.accessToken}`
+                }
+            }
+        )
             .then(res => {
                 console.log(res.data);
-                if(res.data.insertedId){
+                if (res?.data?.insertedId) {
                     toast.success('Event Created');
                 }
             })

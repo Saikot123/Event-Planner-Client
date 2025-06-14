@@ -37,12 +37,10 @@ export const router = createBrowserRouter([
       },
       {
         path: '/joinEvent/:email',
-        loader: ({ params }) => fetch(`http://localhost:3000/joinedEvents/${params.email}`),
         element: <PrivateRoute><JoinEvent></JoinEvent></PrivateRoute >
       },
       {
         path: '/manageEvent/:email',
-        loader: ({ params }) => fetch(`http://localhost:3000/myEvents/${params.email}`),
         element: <PrivateRoute><ManageEvent></ManageEvent></PrivateRoute>
       },
       {

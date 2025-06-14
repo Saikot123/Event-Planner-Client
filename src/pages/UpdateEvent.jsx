@@ -1,16 +1,31 @@
-import React, { use, useState } from 'react';
+import React, { use, useEffect, useState } from 'react';
 import { useLoaderData, useNavigate } from 'react-router';
 import Heading from '../shared/Heading';
 import axios from 'axios';
 import DatePicker from 'react-datepicker';
 import { AuthContext } from '../context/AuthContext';
 import { toast } from 'react-toastify';
+import { updateEventsPromise } from '../api/updateEventApi';
 
 const UpdateEvent = () => {
     const event = useLoaderData();
     const { user } = use(AuthContext);
     const [startDate, setStartDate] = useState(new Date());
     const navigate = useNavigate();
+
+    const checkDate = (date) => {
+        let cnt = 0;
+        for (const letter of date) {
+            if (letter === '/') {
+                ++cnt;
+            } else if (letter >= '0' && letter <= '9') {
+                ;
+            } else {
+                return false;
+            }
+        }
+        return (cnt === 2);
+    }
 
     const previousDate = (date) => {
         const today = new Date();
@@ -47,15 +62,27 @@ const UpdateEvent = () => {
             date,
             description
         }
+
         // Check Date
+        if (!checkDate(date)) {
+            toast.error('Invalid Date!');
+            return;
+        }
+        
+        // Check Previous Date
         if (!previousDate(date)) {
             return;
         }
 
+        if (title === '' || location === '' || type === '' || image === '' || description === '') {
+            toast.error('Invalid Input');
+            return;
+        }
+
         // Update Event in Database
-        axios.patch(`http://localhost:3000/events/${event?._id}`,data,{
-            headers:{
-                Authorization:`Bearer ${user?.accessToken}`
+        axios.patch(`http://localhost:3000/events/${event?._id}`, data, {
+            headers: {
+                Authorization: `Bearer ${user?.accessToken}`
             }
         })
             .then(res => {

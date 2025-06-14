@@ -4,7 +4,6 @@ import { useState } from "react";
 
 const JoinedEvent = ({ joinedEvent }) => {
     const [event,setEvent] = useState(joinedEvent);
-    console.log(event);
     return (
         <div className="card bg-base-100 w-xs shadow-sm">
             <div className="relative">

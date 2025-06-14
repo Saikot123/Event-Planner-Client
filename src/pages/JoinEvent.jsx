@@ -1,30 +1,29 @@
-import React, { Suspense, useEffect, useState } from 'react';
-import { useLoaderData } from 'react-router';
+import React, { Suspense, use, useContext, useEffect, useState } from 'react';
 import AllJoinedEvents from '../components/JoinedEvents/AllJoinedEvents';
-import NoEvent from '../components/UpcomingEventsComponents/NoEvent';
+import { AuthContext } from '../context/AuthContext';
+import { joinEventsPromise } from '../api/joinEventApi';
 
 const JoinEvent = () => {
-    const eventsData = useLoaderData();
-    const [joinedEvents, setJoinedEvents] = useState(eventsData);
+    const { user, loading, setLoading } = useContext(AuthContext);
+    const [load, setLoad] = useState(true);
+    const [joinedEvents, setJoinedEvents] = useState([]);
 
     useEffect(() => {
-        const sortedEvents = joinedEvents.sort((a, b) => {
-            const dateA = new Date(a.date);
-            const dateB = new Date(b.date);
-            return dateA - dateB;
-        });
-        setJoinedEvents(sortedEvents);
-    }, [joinedEvents])
+        joinEventsPromise(user?.email, user?.accessToken)
+            .then(res => res.json())
+            .then(data => {
+                setJoinedEvents(data);
+                setLoad(false);
+            })
+    }, [user])
 
+    if (load) {
+        return <span className="loading loading-spinner loading-xl"></span>;
+    }
 
     return (
         <div className='bg-base-300 py-14'>
-            {
-                joinedEvents.length ?
-                    <AllJoinedEvents joinedEvents={joinedEvents}></AllJoinedEvents>
-                    :
-                    <NoEvent></NoEvent>
-            }
+            <AllJoinedEvents joinedEvents={joinedEvents} setJoinedEvents={setJoinedEvents}></AllJoinedEvents>
         </div>
     );
 };

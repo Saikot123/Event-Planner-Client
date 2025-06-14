@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { use } from 'react';
 import Heading from '../../shared/Heading';
 import ManageEventCard from './ManageEventCard';
 
