@@ -24,7 +24,7 @@ const EventDetails = () => {
 
         // Update The database
         axios.patch(
-            `http://localhost:3000/join_events/${event._id}`,
+            `https://event-planner-server-three.vercel.app/join_events/${event?._id}`,
             { participant: user.email },
             {
                 headers: {

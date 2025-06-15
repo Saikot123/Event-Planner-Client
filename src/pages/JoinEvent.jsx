@@ -12,7 +12,12 @@ const JoinEvent = () => {
         joinEventsPromise(user?.email, user?.accessToken)
             .then(res => res.json())
             .then(data => {
-                setJoinedEvents(data);
+                const sortedData = data.sort((a, b) => {
+                    const dateA = new Date(a.date);
+                    const dateB = new Date(b.date);
+                    return dateA - dateB;
+                });
+                setJoinedEvents(sortedData);
                 setLoad(false);
             })
     }, [user])

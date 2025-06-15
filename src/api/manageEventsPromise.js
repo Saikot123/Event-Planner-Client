@@ -1,5 +1,5 @@
 export const manageEventsPromise = (email, token) => {
-    return fetch(`http://localhost:3000/myEvents/${email}`, {
+    return fetch(`https://event-planner-server-three.vercel.app/myEvents/${email}`, {
         headers: {
             authorization: `Bearer ${token}`
         }

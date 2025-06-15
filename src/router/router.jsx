@@ -23,12 +23,12 @@ export const router = createBrowserRouter([
       },
       {
         path: '/upcomingEvents',
-        loader: () => fetch('http://localhost:3000/events'),
+        loader: () => fetch('https://event-planner-server-three.vercel.app/events'),
         Component: UpcomingEvents
       },
       {
         path: '/eventDetails/:id',
-        loader: ({ params }) => fetch(`http://localhost:3000/events/${params.id}`),
+        loader: ({ params }) => fetch(`https://event-planner-server-three.vercel.app/events/${params.id}`),
         element: <PrivateRoute><EventDetails></EventDetails></PrivateRoute>
       },
       {
@@ -45,7 +45,7 @@ export const router = createBrowserRouter([
       },
       {
         path: '/updateEvent/:id',
-        loader: ({ params }) => fetch(`http://localhost:3000/events/${params.id}`),
+        loader: ({ params }) => fetch(`https://event-planner-server-three.vercel.app/events/${params.id}`),
         element: <PrivateRoute><UpdateEvent></UpdateEvent></PrivateRoute>
       },
       {

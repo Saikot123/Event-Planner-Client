@@ -8,7 +8,7 @@ const Newsteller = () => {
     return (
         <div className='bg-white dark:bg-primary'>
             <div className='w-4/5 mx-auto py-14'>
-                <h2 className='font-bold text-5xl text-secondary text-center pb-10 lg:pb-0'>Our Newsteller</h2>
+                <h2 className='font-bold text-5xl text-secondary text-center pb-10 lg:pb-0'>Get Latest Update</h2>
                 <div className='grid grid-cols-1 md:grid-cols-2 gap-2'>
                     {/* Content */}
                     <div className='flex flex-col items-start justify-end gap-5 text-secondary'>

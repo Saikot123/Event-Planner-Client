@@ -5,7 +5,6 @@ import axios from 'axios';
 import DatePicker from 'react-datepicker';
 import { AuthContext } from '../context/AuthContext';
 import { toast } from 'react-toastify';
-import { updateEventsPromise } from '../api/updateEventApi';
 
 const UpdateEvent = () => {
     const event = useLoaderData();
@@ -68,7 +67,7 @@ const UpdateEvent = () => {
             toast.error('Invalid Date!');
             return;
         }
-        
+
         // Check Previous Date
         if (!previousDate(date)) {
             return;
@@ -80,7 +79,7 @@ const UpdateEvent = () => {
         }
 
         // Update Event in Database
-        axios.patch(`http://localhost:3000/events/${event?._id}`, data, {
+        axios.patch(`https://event-planner-server-three.vercel.app/events/${event?._id}`, data, {
             headers: {
                 Authorization: `Bearer ${user?.accessToken}`
             }

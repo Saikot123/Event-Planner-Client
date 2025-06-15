@@ -81,7 +81,7 @@ const CreateEvent = () => {
 
         // Create Event in Database
         axios.post(
-            'http://localhost:3000/events',
+            'https://event-planner-server-three.vercel.app/events',
             data,
             {
                 headers: {
