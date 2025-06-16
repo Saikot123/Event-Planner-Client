@@ -25,7 +25,15 @@ Welcome to **Event Planner** — a powerful and intuitive platform where users c
 - **Tailwind CSS** 4 – Modern utility-first styling
 - **DaisyUI** (optional) – For consistent UI components
 
-### 🔧 Packages & Libraries
+### ⚙️ Backend
+
+- **Node.js** & **Express.js** – RESTful API server
+- **MongoDB** – NoSQL database for storing event and user data
+- **JWT (JSON Web Token)** – Authentication and secure route protection
+
+---
+
+## 📦 Packages & Libraries Used
 
 | Package | Purpose |
 |--------|---------|
@@ -42,22 +50,38 @@ Welcome to **Event Planner** — a powerful and intuitive platform where users c
 
 ---
 
-## 📸 Screenshots
+## 🛠️ Folder Structure (Simplified)
 
-> *(Optional: Add screenshots or demo GIFs here to showcase UI)*
+src/
+├── api/
+├── components/
+├── context/
+├── pages/
+├── router/
+├── shared/
+└── App.jsx
+
 
 ---
 
-## ⚙️ Getting Started
+## 🙌 Contributing
 
-### Prerequisites
+Contributions, issues, and feature requests are welcome!  
+Feel free to check the [issues page](https://github.com/your-username/event-planner/issues).
 
-- Node.js >= 18.x
-- npm or yarn
+---
 
-### Installation
+## 📄 License
 
-1. **Clone the repo**
-   ```bash
-   git clone https://github.com/your-username/event-planner.git
-   cd event-planner
+This project is open-source and available under the [MIT License](LICENSE).
+
+---
+
+## 💬 Feedback
+
+If you have any feedback or suggestions, reach out at **your-email@example.com**  
+Or open a PR/issue directly in the [GitHub repo](https://github.com/your-username/event-planner).
+
+---
+
+> Made with ❤️ by [Ishtiaque Ahmed Saikot.
