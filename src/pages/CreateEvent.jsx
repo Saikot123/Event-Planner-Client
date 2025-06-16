@@ -6,12 +6,14 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { toast } from 'react-toastify';
 import { AuthContext } from '../context/AuthContext';
+import { useNavigate } from 'react-router';
 
 // m/d/y
 
 const CreateEvent = () => {
     const [startDate, setStartDate] = useState(new Date());
     const { user } = use(AuthContext);
+    const navigate = useNavigate();
 
     const checkDate = (date) => {
         let cnt = 0;
@@ -93,6 +95,7 @@ const CreateEvent = () => {
                 console.log(res.data);
                 if (res?.data?.insertedId) {
                     toast.success('Event Created');
+                    navigate(`/upcomingEvents`);
                 }
             })
             .catch(error => {

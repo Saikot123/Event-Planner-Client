@@ -1,12 +1,63 @@
-# React + Vite
+# 📅 Event Planner
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Welcome to **Event Planner** — a powerful and intuitive platform where users can effortlessly **create**, **manage**, **update**, and **join events** in just a few clicks.
 
-Currently, two official plugins are available:
+🔗 **Live Site**: [event-planner-eff00.web.app](https://event-planner-eff00.web.app/)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+## ✨ Key Features
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- 🔧 **Create Events** – Organize new events with detailed information and scheduling.
+- 📋 **Manage Events** – View and maintain all your organized events.
+- 🔄 **Update Events** – Edit any event details anytime before they occur.
+- 🧑‍🤝‍🧑 **Join Events** – Seamlessly join events with a single click.
+- 📆 **Upcoming Events** – See a sorted list of upcoming events.
+- 🔐 **Secure Authentication** – Powered by Firebase for safe and fast login/signup.
+
+---
+
+## 🚀 Tech Stack
+
+### 🖥️ Frontend
+
+- **React** 19 – Lightning-fast UI with components
+- **Tailwind CSS** 4 – Modern utility-first styling
+- **DaisyUI** (optional) – For consistent UI components
+
+### 🔧 Packages & Libraries
+
+| Package | Purpose |
+|--------|---------|
+| `axios` | API requests |
+| `firebase` | Authentication & hosting |
+| `lottie-react`, `react-lottie` | Animations |
+| `motion` | Smooth transitions & motion |
+| `react-datepicker` | Select dates easily |
+| `react-icons` | Iconography |
+| `react-router` | Routing |
+| `react-simple-typewriter` | Typewriter effects |
+| `react-toastify` | Toast notifications |
+| `react-tooltip` | Interactive tooltips |
+
+---
+
+## 📸 Screenshots
+
+> *(Optional: Add screenshots or demo GIFs here to showcase UI)*
+
+---
+
+## ⚙️ Getting Started
+
+### Prerequisites
+
+- Node.js >= 18.x
+- npm or yarn
+
+### Installation
+
+1. **Clone the repo**
+   ```bash
+   git clone https://github.com/your-username/event-planner.git
+   cd event-planner

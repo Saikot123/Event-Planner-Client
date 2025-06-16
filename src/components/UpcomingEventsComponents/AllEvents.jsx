@@ -41,7 +41,7 @@ const AllEvents = ({ events }) => {
                 ></Heading>
 
                 {/* Input */}
-                <div class="flex flex-wrap gap-2 justify-between mb-10">
+                <div class="flex flex-col md:flex-row gap-2 justify-between mb-10">
                     <input onChange={handleSearch} type="text" placeholder="Search By Title" className="input text-secondary font-semibold" />
 
                     <div class="flex flex-wrap gap-2 justify-center mb-10">
