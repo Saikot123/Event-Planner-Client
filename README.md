@@ -79,7 +79,7 @@ This project is open-source and available under the [MIT License](LICENSE).
 
 ## 💬 Feedback
 
-If you have any feedback or suggestions, reach out at **your-email@example.com**  
+If you have any feedback or suggestions, reach out at **saikotahmed003@gmail.com**  
 Or open a PR/issue directly in the [GitHub repo](https://github.com/your-username/event-planner).
 
 ---
