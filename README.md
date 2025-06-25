@@ -48,19 +48,6 @@ Welcome to **Event Planner** — a powerful and intuitive platform where users c
 | `react-toastify` | Toast notifications |
 | `react-tooltip` | Interactive tooltips |
 
----
-
-## 🛠️ Folder Structure (Simplified)
-
-src/
-├── api/
-├── components/
-├── context/
-├── pages/
-├── router/
-├── shared/
-└── App.jsx
-
 
 ---
 
